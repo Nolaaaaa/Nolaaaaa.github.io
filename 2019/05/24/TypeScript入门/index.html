@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="TypeScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习TypeScript入门教程时的笔记和总结。">
+<meta name="keywords" content="TypeScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TypeScript入门">
+<meta property="og:url" content="http://yoursite.com/2019/05/24/TypeScript入门/index.html">
+<meta property="og:site_name" content="Nola&#39;s Blog">
+<meta property="og:description" content="学习TypeScript入门教程时的笔记和总结。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-27T04:22:41.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TypeScript入门">
+<meta name="twitter:description" content="学习TypeScript入门教程时的笔记和总结。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/24/TypeScript入门/">
+
+
+
+
+
+  <title>TypeScript入门 | Nola's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nola's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/24/TypeScript入门/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nola's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TypeScript入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-24T23:25:29+08:00">
+                2019-05-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/24/TypeScript入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/05/24/TypeScript入门/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/05/24/TypeScript入门/" class="leancloud_visitors" data-flag-title="TypeScript入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学习<a href="https://ts.xcatliu.com/" target="_blank" rel="noopener">TypeScript入门教程</a>时的笔记和总结。<br><a id="more"></a></p>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><p><strong>boolean</strong>：<code>let temp: boolean = false</code>。注意：<code>new Boolean(1)</code>返回的是Boolean 对象，<code>Boolean(1)</code>返回的是boolean 类型<br><strong>number</strong>：Ts中的16进制转化为Js的时候还是16进制，但是2、8进制会转化成10进制<br><strong>string</strong>：可用模板字符串<br><strong>void</strong>：空值，可以用 <code>void</code> 表示没有任何返回值的函数，声明一个 <code>void</code> 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null<br><strong>null 和 undefined</strong>：与 <code>void</code> 的区别是，<code>undefined</code> 和 <code>null</code> 是所有类型的子类型，可以赋值给 <code>number</code> 类型的变量，而 <code>void</code> 不可以<br><strong>any</strong>：任意值，允许被赋值为任意类型，对它的任何操作，返回的内容的类型也都是任意值。变量声明时，未指定其类型，且定义时未赋值，则默认为 <code>any</code> 类型。</p>
+<p><strong>类型推论：</strong><br>如果定义时未指定其类型，且<strong>赋值</strong>，则会根据定义时所赋值的类型来推断其类型。<br>PS：如果定义时未指定其类型，且<strong>未赋值</strong>，则默认为 <code>any</code>类型。</p>
+<h3 id="字符串字面量类型"><a href="#字符串字面量类型" class="headerlink" title="字符串字面量类型"></a>字符串字面量类型</h3><p>用来约束取值只能是某几个字符串中的一个</p>
+<ol>
+<li>使用 <code>type</code> 进行定义，<code>type EventNames = &#39;click&#39; | &#39;scroll&#39; | &#39;mousemove&#39;</code></li>
+</ol>
+<h3 id="联合类型："><a href="#联合类型：" class="headerlink" title="联合类型："></a>联合类型：</h3><p>表示取值可以为多种类型中的一种。使用 | 分隔每个类型，如：<code>let temp: string | number</code></p>
+<ol>
+<li>当联合类型的变量<strong>没有被赋值</strong>时，只能访问此联合类型的所有类型里共有的属性或方法。（当联合类型的变量<strong>被赋值</strong>时，会根据类型推论的规则推断出一个类型。）</li>
+<li>对于第1点，变量未被赋值时只能访问共有属性，解决办法是：使用时先 <code>类型断言</code> 某个变量为特定类型（联合类型中定义过的），如：<code>(&lt;boolean&gt;temp).length</code>（格式：<code>&lt;类型&gt;值</code>或<code>值 as 类型</code>（tsx 语法中））</li>
+</ol>
+<h3 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h3><p>用于取值被限定在一定范围内的场景</p>
+<ol>
+<li>使用 <code>enum</code> 进行定义，如：<code>enum Days {Sun, Mon, Tue, Wed, Thu, Fri, Sat}</code></li>
+<li>枚举成员会被赋值为从 <code>0</code> 开始递增的数字，同时也会对枚举值到枚举名进行反向映射，如：<code>Days[&quot;Sun&quot;] === 0 // true   Days[0] === &quot;Sun&quot;  // true</code></li>
+<li>手动<strong>给部分枚举项赋值</strong>时，未手动赋值的部分会自动编译，可能会有覆盖的情况</li>
+<li>手动赋值的枚举项<strong>不是数字</strong>时，需使用类型断言让 <code>tsc</code> 无视类型检查：<code>Sat = &lt;any&gt;&quot;S&quot;</code></li>
+<li>手动赋值的枚举项<strong>是小数或负数</strong>时，此时后续未手动赋值的项的递增步长仍为 <code>1</code></li>
+<li>枚举项有两种类型：<strong>常数项</strong>和<strong>计算所得项</strong>（后面若是未手动赋值的项，会因无法获得初始值而报错）</li>
+<li><strong>常数枚举</strong>：使用 <code>const enum</code> 定义，会在编译阶段被删除，并且<strong>不能包含计算成员</strong></li>
+<li><strong>外部枚举</strong>：使用 <code>declare enum</code> 定义，<code>declare</code>定义的类型只会用于编译时的检查，编译结果中会被删除，常出现在声明文件中，也可同时使用 <code>declare</code> 和 <code>const</code>，如：<code>declare const enum Temp { ... }</code></li>
+<li>TypeScript 的枚举类型的概念来源于 <code>C#</code></li>
+</ol>
+<h3 id="对象类型——接口"><a href="#对象类型——接口" class="headerlink" title="对象类型——接口"></a>对象类型——接口</h3><p>接口（Interfaces）用于定义对象的类型。</p>
+<ol>
+<li>赋值时，接口和变量的形状必须一致，1V1，多一个少一个都不行</li>
+<li>对于第1点：当一个属性被定义为可选属性，即可以不给这个属性赋值</li>
+<li>不允许添加未定义的属性</li>
+<li>对于第2点：当接口定义了任意属性，则可以添加未提前定义的属性<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">  readonly id: <span class="built_in">number</span>;    <span class="comment">// readonly 定义只读属性，初始化后不能再被赋值</span></span><br><span class="line">  name: <span class="built_in">string</span>;   <span class="comment">// 必须要赋值</span></span><br><span class="line">  age?: <span class="built_in">number</span>;   <span class="comment">// ?: 定义可选属性，可以不赋值</span></span><br><span class="line">  [propName: <span class="built_in">string</span>]: <span class="built_in">any</span>;   <span class="comment">// 定义任意属性</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Person 是 nola 的接口</span></span><br><span class="line"><span class="keyword">let</span> nola: Person = &#123;</span><br><span class="line">  id: <span class="number">249399</span>;</span><br><span class="line">  name: <span class="string">'Nola'</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="内置对象类型"><a href="#内置对象类型" class="headerlink" title="内置对象类型"></a>内置对象类型</h3><ol>
+<li>ECMAScript 的内置对象：<code>Boolean</code>、<code>Error</code>、<code>Date</code>、<code>RegExp</code> 等</li>
+<li>DOM 和 BOM 的内置对象：<code>Document</code>、<code>HTMLElement</code>、<code>Event</code>、<code>NodeList</code> 等</li>
+<li>TypeScript 核心库的定义文件中定义了所有浏览器环境需要用到的类型，如使用方法<code>Math.pow(10, &#39;2&#39;)</code>时会报错，因为<code>Math.pow</code> 必须接受两个 <code>number</code> 类型的参数</li>
+<li>TypeScript 核心库的定义中不包含 <code>Node.js</code>部分<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b: <span class="built_in">Boolean</span> = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">let</span> e: <span class="built_in">Error</span> = <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Error occurred'</span>);</span><br><span class="line"><span class="keyword">let</span> d: <span class="built_in">Date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">let</span> r: <span class="built_in">RegExp</span> = <span class="regexp">/[a-z]/</span>;</span><br><span class="line"><span class="keyword">let</span> body: HTMLElement = <span class="built_in">document</span>.body;</span><br><span class="line"><span class="keyword">let</span> allDiv: NodeList = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e: MouseEvent</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><p>定义数组类型的几种方法：</p>
+<ol>
+<li>类型 + []：<code>let temp: number[] = [1, 2, 3]</code>，注意：数组中值的类型需和<code>[]</code>前的类型一致</li>
+<li><code>Array&lt;number&gt;</code>数组泛型：<code>let temp: Array&lt;number&gt; = [1, 2, 3]</code>，注意：数组中值的类型需和<code>&lt;...&gt;</code>中定义的类型一致</li>
+<li>使用接口描述数组：<code>interface NumberArray { [index: number]: number }</code><br>PS：类数组不是数组，不能用数组的方式定义，可用类数组自己的接口定义，如 I<code>Arguments</code>、<code>NodeList</code>、<code>HTMLCollection</code></li>
+</ol>
+<h3 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h3><p>数组合并了相同类型的对象，而元组（Tuple）合并了不同类型的对象。</p>
+<ol>
+<li>定义：<code>let Nola: [string, number]</code></li>
+<li>赋值：<code>Nola[0] = &#39;Nola&#39;</code>或<code>Nola=[&#39;Nola&#39;,25]</code></li>
+<li>使用<code>Nola.push(&#39;&#39;)</code>添加越界的元素时，它的类型会被限制为元组中每个类型的联合类型</li>
+</ol>
+<h3 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h3><p>函数的类型定义：<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ts 函数声明的类型定义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123; <span class="keyword">return</span> x + y &#125;</span><br><span class="line"><span class="comment">// ts 函数表达式的类型定义</span></span><br><span class="line"><span class="keyword">let</span> sum: <span class="function">(<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>) =&gt;</span> <span class="built_in">number</span> = <span class="function"><span class="keyword">function</span> (<span class="params">x: <span class="built_in">number</span>, y: <span class="built_in">number</span></span>): <span class="title">number</span> </span>&#123; <span class="keyword">return</span> x + y &#125;</span><br><span class="line"><span class="comment">// 使用接口定义函数需要的形状</span></span><br><span class="line"><span class="keyword">interface</span> Func &#123; </span><br><span class="line">  (x: <span class="built_in">string</span>, y: <span class="built_in">string</span>): <span class="built_in">boolean</span>;</span><br><span class="line">  interval: <span class="built_in">number</span>;  <span class="comment">// 定义函数自己的属性</span></span><br><span class="line">  reset(): <span class="built_in">void</span>;   <span class="comment">// 定义函数自己的方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> sum: Func</span><br></pre></td></tr></table></figure></p>
+<p>使用注意：</p>
+<ol>
+<li>使用时的参数不能 少于/多于 所定义的参数数量</li>
+<li>对于第1点：可使用 <code>?:</code> 定义可选参数，但选参数后面不允许再出现必须参数</li>
+<li>TypeScript 中的 <code>=&gt;</code>：<code>(输入类型) =&gt; 输出类型</code></li>
+<li>参数默认值：<code>name: string = &#39;Nola&#39;</code>，ts默认该参数为可选参数，但是后面也可出现必须参数</li>
+<li>剩余参数 <code>...rest</code> 是一个数组，可用 <code>...items: any[]</code> 方式定义。注意; <code>...rest</code> 参数只能是最后一个参数</li>
+<li>重载：允许一个函数接受不同数量或类型的参数时，作出不同的处理</li>
+</ol>
+<h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><p>类的用法具体参考：<a href="https://ts.xcatliu.com/advanced/class" target="_blank" rel="noopener">TypeScript入门教程 - 类</a>和<a href="http://es6.ruanyifeng.com/" target="_blank" rel="noopener">ECMAScript 6 入门 - Class</a></p>
+<ol>
+<li>(ES6)类的继承：使用 <code>extends</code> 实现继承，如：<code>class A extends B</code>，子类中使用 <code>super</code> 调用父类的构造函数和方法</li>
+<li>(ES6)静态方法：使用 <code>static</code> 修饰，如：<code>static tamp(a)</code>，它们<strong>不需要实例化</strong>，而是<strong>直接通过类来调用</strong></li>
+<li>(ES7)静态属性：使用 <code>static</code> 修饰，如：<code>static age = 24</code></li>
+<li>(TS)访问修饰符：<code>public</code>（公有的，值可以被外部获取和修改，默认）、<code>private</code>（私有的，无法直接存取，子类中也不允许被访问） 和 <code>protected</code>（和 private 类似，区别是它在子类中允许被访问）</li>
+<li>(TS)抽象类：使用 <code>abstract</code> 定义，如：<code>abstract class A</code>，不允许被实例化，可以被继承，但抽象类中的抽象方法必须被子类实现，编译结果中，会存在这个类</li>
+</ol>
+<h3 id="类与接口"><a href="#类与接口" class="headerlink" title="类与接口"></a>类与接口</h3><p>接口的另一个用途，对类的一部分行为进行抽象</p>
+<ol>
+<li>类的特性提取成接口：使用 <code>implements</code> 实现，如：<code>class A implements C</code>（C使用 <code>interface C</code> 定义），多个接口之间可使用<code>,</code>隔开</li>
+<li>接口继承接口：<code>interface C extends D</code>（D使用 <code>interface D</code> 定义），接口也可以继承类</li>
+</ol>
+<h3 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h3><p>在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性<br><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// T、U 用来指代任意输入的类型</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>&lt;<span class="title">T</span>&gt;(<span class="params">value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;...&#125; </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>&lt;<span class="title">T</span>, <span class="title">U</span>&gt;(<span class="params">value: [T, U]</span>): [<span class="title">U</span>, <span class="title">T</span>] </span>&#123;...&#125;   </span><br><span class="line"><span class="comment">// 泛型约束，extends 约束了泛型 T 必须符合对应的形状</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">Temp</span>&gt;(<span class="params">value: T</span>): <span class="title">T</span> </span>&#123;...&#125;    <span class="comment">// Temp为自定义的一个接口</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">U</span>, <span class="title">U</span>&gt;(<span class="params">value: T, source: U</span>): <span class="title">T</span>    // 多个类型参数之间也可以互相约束</span></span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>泛型中的类型参数指定默认类型，如：<code>&lt;T = string&gt;</code></li>
+<li>泛型可用于函数、类的类型定义中，如：<code>interface Temp&lt;T&gt; {}</code> <code>class Temp&lt;T&gt; {}</code></li>
+</ol>
+<h3 id="声明合并"><a href="#声明合并" class="headerlink" title="声明合并"></a>声明合并</h3><p>如果定义了两个相同名字的函数、接口或类，那么它们会合并成一个类型</p>
+<ol>
+<li>函数的合并：使用<strong>重载</strong>定义多个函数类型</li>
+<li>接口合并：两个相同名字的属性会合并到一个接口中，但是合并的属性的类型必须是唯一的（如两个属性相同，类型相同不会报错，不同时会报错）</li>
+<li>类的合并与接口的合并规则一致</li>
+</ol>
+<h3 id="类型别名"><a href="#类型别名" class="headerlink" title="类型别名"></a>类型别名</h3><p>类型别名常用于联合类型</p>
+<ol>
+<li>使用 <code>type</code> 创建类型别名</li>
+</ol>
+<h3 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h3><p>内容太多了，简单总结一下，具体该教程<a href="https://ts.xcatliu.com/basics/declaration-files" target="_blank" rel="noopener">地址</a><br>第三方声明文件使用 @types 统一管理第三方库的声明文件，如：<code>npm install @types/name --save-dev</code></p>
+<h4 id="全局变量的声明文件"><a href="#全局变量的声明文件" class="headerlink" title="全局变量的声明文件"></a>全局变量的声明文件</h4><p>通过 <code>&lt;script&gt;</code> 标签引入第三方库</p>
+<ol>
+<li>声明文件必需以 <code>.d.ts</code> 为后缀</li>
+<li>声明语句只能定义类型，不能在声明语句中定义具体的实现，<code>declare let Name: (selector: string) =&gt; any;</code></li>
+<li>全局变量的声明文件的几种语法：<ul>
+<li><code>declare var</code> 声明全局变量</li>
+<li><code>declare function</code> 声明全局方法</li>
+<li><code>declare class</code> 声明全局类</li>
+<li><code>declare enum</code> 声明全局枚举类型</li>
+<li><code>declare namespace</code> 声明（含有子属性的）全局对象</li>
+<li><code>interface</code> 和 <code>type</code> 声明全局类型</li>
+</ul>
+</li>
+<li>为防止命名冲突，应尽可能的减少全局变量或全局类型的数量，最好将他们放到 <code>declare namespace</code> 下</li>
+</ol>
+<h4 id="npm-包的声明文件"><a href="#npm-包的声明文件" class="headerlink" title="npm 包的声明文件"></a>npm 包的声明文件</h4><p>通过 <code>import foo from &#39;foo&#39;</code> 导入</p>
+<ol start="2">
+<li>创建声明文件前先看看它的声明文件是否已经存在</li>
+<li>npm 包声明文件存在的地方：<ul>
+<li>第一：与该 <code>npm</code> 包绑定在一起。判断依据是 <code>package.json</code> 中有 <code>types</code> 字段，或者有一个 <code>index.d.ts</code> 声明文件</li>
+<li>第二：<code>@types</code> 里，尝试安装一下对应的 <code>@types</code> 包就知道是否存在该声明文件</li>
+</ul>
+</li>
+<li>创建 <code>npm</code> 包声明文件的方法：<ul>
+<li>第一种：创建一个 <code>node_modules/@types/foo/index.d.ts</code> 文件，存放 <code>foo</code> 模块的声明文件（有风险，如无法版本回溯或可能被删掉，不推荐）<ul>
+<li>第二种：创建一个 types 目录，专门用来管理自己写的声明文件，将 <code>foo</code> 的声明文件放到 <code>types/foo/index.d.ts</code> 中。这种方式需要配置下 <code>tsconfig.json</code> 中的 <code>paths</code> 和 <code>baseUrl</code> 字段</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>npm 包的声明文件的几种语法：<ul>
+<li><strong>export 导出变量</strong>（如：<code>export const/function/class/enum/interface</code>，<code>export namespace</code> 导出（含有子属性的）对象，也可以用<code>declare</code>声明多个变量（<code>interface</code> 不用加 <code>declare</code>），再用<code>export</code>导出 <code>export { name、age }</code>）</li>
+<li><strong>export default ES6 默认导出</strong>（导入时用<code>import foo from &#39;foo&#39;</code> 而不是 <code>import { foo } from &#39;foo&#39;</code>，只有 <code>function</code>、<code>class</code> 和 <code>interface</code> 可以直接默认导出，其他的变量需要先定义出来，再默认导出，如：<code>export default enum</code> 是错误的语法，需要使用 <code>declare enum</code> 先定义）、commonjs 规范的导出 <code>export = xxx</code>（导入方法：<code>const ... = require(&#39;...&#39;)</code>/<code>import ... from</code>/<code>import ... =  require(&#39;...&#39;)</code>）</li>
+</ul>
+</li>
+</ol>
+<h4 id="UMD-库的声明文件"><a href="#UMD-库的声明文件" class="headerlink" title="UMD 库的声明文件"></a>UMD 库的声明文件</h4><p>可以通过 <code>&lt;script&gt;</code> 标签引入，又可以通过 <code>import</code> 导入</p>
+<ol>
+<li>基于 npm 包的类型声明文件，需要额外声明一个全局变量，语法为 <code>export as namespace</code></li>
+<li><code>export as namespace</code>可与<code>export default</code>一起使用</li>
+</ol>
+<h4 id="改变全局变量的类型"><a href="#改变全局变量的类型" class="headerlink" title="改变全局变量的类型"></a>改变全局变量的类型</h4><ol>
+<li><strong>直接扩展全局变量</strong>：通过 <code>&lt;script&gt;</code> 标签引入后，改变一个全局变量的结构，通过声明合并（如扩展<code>String</code>可使用<code>interface String</code>）、使用 <code>declare namespace</code> 给已有的命名空间添加类型声明<br>在 npm 包或 UMD 库中扩展全局变量：引用 <code>npm</code> 包或 <code>UMD</code> 库后，改变一个全局变量的结构，语法为：<code>declare global</code></li>
+<li><strong>模块插件</strong>：通过 <code>&lt;script&gt;</code> 或 <code>import</code> 导入后，改变另一个模块的结构，语法为：<code>declare module</code></li>
+</ol>
+<h4 id="自动生成声明文件"><a href="#自动生成声明文件" class="headerlink" title="自动生成声明文件"></a>自动生成声明文件</h4><p>如果库的源码本身就是由 ts 写的，那么在使用 tsc 脚本将 ts 编译为 js 的时候，添加 declaration 选项，就可以同时也生成 .d.ts 声明文件</p>
+<ol>
+<li>在命令行中添加 <code>--declaration</code>（简写 -d）</li>
+<li><code>tsconfig.json</code> 中添加 <code>declaration</code> 选项，<code>&quot;declaration&quot;: true</code></li>
+</ol>
+<h4 id="发布声明文件"><a href="#发布声明文件" class="headerlink" title="发布声明文件"></a>发布声明文件</h4><ol>
+<li>将声明文件和源码放在一起</li>
+<li>将声明文件发布到 <code>@types</code> 下</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/23/Python-函数式编程、模块和包、面向对象编程/" rel="next" title="Python--函数式编程、模块和包、面向对象编程">
+                <i class="fa fa-chevron-left"></i> Python--函数式编程、模块和包、面向对象编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/07/安装Scrapy的过程/" rel="prev" title="安装 Scrapy 遇到的一些坑及处理">
+                安装 Scrapy 遇到的一些坑及处理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2019/05/24/TypeScript入门/" data-title="TypeScript入门" data-url="http://yoursite.com/2019/05/24/TypeScript入门/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="Nola">
+            
+              <p class="site-author-name" itemprop="name">Nola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Nolaaaaa" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/nolaaaaa/" target="_blank" title="cnblog">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>cnblog</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://nolaaaaa.github.io/myResume/" target="_blank" title="resume">
+                      
+                        <i class="fa fa-fw fa-bullseye"></i>resume</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型"><span class="nav-text">基本类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串字面量类型"><span class="nav-text">字符串字面量类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#联合类型："><span class="nav-text">联合类型：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#枚举类型"><span class="nav-text">枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象类型——接口"><span class="nav-text">对象类型——接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置对象类型"><span class="nav-text">内置对象类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组类型"><span class="nav-text">数组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组类型"><span class="nav-text">元组类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数类型"><span class="nav-text">函数类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类"><span class="nav-text">类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类与接口"><span class="nav-text">类与接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#泛型"><span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明合并"><span class="nav-text">声明合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型别名"><span class="nav-text">类型别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明文件"><span class="nav-text">声明文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#全局变量的声明文件"><span class="nav-text">全局变量的声明文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-包的声明文件"><span class="nav-text">npm 包的声明文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UMD-库的声明文件"><span class="nav-text">UMD 库的声明文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改变全局变量的类型"><span class="nav-text">改变全局变量的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动生成声明文件"><span class="nav-text">自动生成声明文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发布声明文件"><span class="nav-text">发布声明文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nola</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = '<%- config.leancloud_visitors.app_id %>';
+    var APP_KEY = '<%- config.leancloud_visitors.app_key %>';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count 
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+   // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'rldgl2btVyOXBYKETyCVTvDT-gzGzoHsz',
+        appKey: 'Ur2vRYL9114jx73B9TJqtzEv',
+        placeholder: 'ヾﾉ≧∀≦)o小盆友，快来留言吧！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("rldgl2btVyOXBYKETyCVTvDT-gzGzoHsz", "Ur2vRYL9114jx73B9TJqtzEv");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottom + Left";
+      
+          pbOptions.networks = "Weibo,Wechat,QQZone,Evernote,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

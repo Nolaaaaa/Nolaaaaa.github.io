@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Vue,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="整理的在使用vue的过程中遇到的一些零碎的容易忘记的知识点">
+<meta name="keywords" content="Vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue相关知识整理">
+<meta property="og:url" content="http://yoursite.com/2018/07/18/Vue相关知识整理/index.html">
+<meta property="og:site_name" content="Nola&#39;s Blog">
+<meta property="og:description" content="整理的在使用vue的过程中遇到的一些零碎的容易忘记的知识点">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/08/18/5b77c66918abe.png">
+<meta property="og:updated_time" content="2020-04-27T04:22:41.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue相关知识整理">
+<meta name="twitter:description" content="整理的在使用vue的过程中遇到的一些零碎的容易忘记的知识点">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/18/5b77c66918abe.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/18/Vue相关知识整理/">
+
+
+
+
+
+  <title>Vue相关知识整理 | Nola's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nola's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-guestbook">
+          <a href="/guestbook/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/Vue相关知识整理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Nola">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nola's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Vue相关知识整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T14:33:55+08:00">
+                2018-07-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/18/Vue相关知识整理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/07/18/Vue相关知识整理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/07/18/Vue相关知识整理/" class="leancloud_visitors" data-flag-title="Vue相关知识整理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>整理的在使用vue的过程中遇到的一些零碎的容易忘记的知识点<br><a id="more"></a></p>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><h3 id="vue的computed属性和methods区别"><a href="#vue的computed属性和methods区别" class="headerlink" title="vue的computed属性和methods区别"></a>vue的computed属性和methods区别</h3><ol>
+<li>computed是响应式的，methods并非响应式。</li>
+<li>调用方式不一样，computed定义的成员像属性一样访问，methods定义的成员必须以函数形式调用。</li>
+<li>computed是带缓存的，只有其引用的响应式属性发生改变时才会重新计算，而methods里的函数在每次调用时都要执行。</li>
+<li>computed中的成员可以只定义一个函数作为只读属性，也可以定义get/set变成可读写属性，这点是methods中的成员做不到的</li>
+</ol>
+<h3 id="Vue-的双向绑定是如何实现的？如何追踪变化？"><a href="#Vue-的双向绑定是如何实现的？如何追踪变化？" class="headerlink" title="Vue 的双向绑定是如何实现的？如何追踪变化？"></a>Vue 的双向绑定是如何实现的？如何追踪变化？</h3><p>把一个普通的 JavaScript 对象传给 Vue 实例的 data 选项，Vue 将遍历此对象所有的属性，并使用 Object.defineProperty 把这些属性全部转为 getter/setter。<br>这些 getter/setter 对用户来说是不可见的，但是在内部它们让 Vue 追踪依赖，在属性被访问和修改时通知变化。<br><a href="https://cn.vuejs.org/images/data.png" target="_blank" rel="noopener">vue响应式原理</a></p>
+<h3 id="父子通信"><a href="#父子通信" class="headerlink" title="父子通信"></a>父子通信</h3><p>组件关系可分为父子组件通信、兄弟组件通信（new Vue() 作为 eventBus）、跨级组件通信。<br>父子组件通信的方法为：子组件通过<code>props方法</code>接受父组件的data数据，子组件通过<code>$emit</code>触发父组件的自定义事件，如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 父组件将数据（currentUser）和方法（logout）传递出去</span></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;Todo v-<span class="keyword">else</span> <span class="meta">@logout</span>=<span class="string">"logout"</span> :currentUser=<span class="string">"currentUser"</span>/&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子组件接收数据和方法</span></span><br><span class="line">props : [<span class="string">'currentUser'</span>],</span><br><span class="line">methods: &#123;</span><br><span class="line">  logout() &#123;   <span class="comment">//注册 _user</span></span><br><span class="line">    <span class="keyword">this</span>.$emit(<span class="string">"logout"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>on和emit的事件必须是在一个公共的实例上，才能触发<br>子组件用<code>$emit()</code>触发事件<code>this.$emit(‘logout’)</code><br>父组件用<code>$on()</code>监昕子组件的事件<code>@logout =“logout”</code><br><a href="https://images2018.cnblogs.com/blog/1047894/201804/1047894-20180408144143328-388340893.png" target="_blank" rel="noopener">父子通信</a></p>
+<h3 id="v-show和v-if指令的共同点和不同点"><a href="#v-show和v-if指令的共同点和不同点" class="headerlink" title="v-show和v-if指令的共同点和不同点"></a>v-show和v-if指令的共同点和不同点</h3><p><strong>v-show</strong>指令是通过修改元素的display的CSS属性让其显示或者隐藏<br><strong>v-if</strong>指令是直接销毁和重建DOM达到让元素显示和隐藏的效果</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>生命周期，即Vue 实例从创建到销毁的过程，一共分为8个阶段。生命周期可以让我们在控制整个Vue实例时形成好的逻辑。第一次页面加载时会触发 beforeCreate, created, beforeMount, mounted 这几个钩子。DOM 在 mounted时渲染完成。<a href="http://www.cnblogs.com/gagag/p/6246493.html" target="_blank" rel="noopener">Vue生命周期举例</a><a href="https://cn.vuejs.org/v2/api/%23%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90" target="_blank" rel="noopener">API — Vue.js</a><br><strong>创建前/后：</strong><br><strong>beforeCreated</strong>阶段，vue实例的挂载元素$el和数据对象data都为undefined，还未初始化。这个时候可以加loading事件。<br><strong>created</strong>阶段，vue实例的数据对象data有了，$el还没有。这个时候可以结束loading事件，也可以调用异步请求。<br><strong>载入前/后：</strong><br><strong>beforeMount</strong>阶段，vue实例的$el和data都初始化了，但还是挂载之前为虚拟的dom节点，data.message还未替换。<br><strong>mounted</strong>阶段，vue实例挂载完成，data.message成功渲染。<br><strong>更新前/后：</strong><br>当data变化时，会触发<strong>beforeUpdate</strong>和<strong>updated</strong>方法。<br><strong>销毁前/后：</strong><br><strong>beforeDestroy</strong>时可以做一个确认停止事件的确认框。执行 <strong>destroy</strong> 方法后，对data的改变不会再触发周期函数，说明此时vue实例已经解除了事件监听以及和dom的绑定，但是dom结构依然存在<br><img src="https://i.loli.net/2018/08/18/5b77c66918abe.png" alt="生命周期"></p>
+<h3 id="css在Vue-cli中怎么安装使用？"><a href="#css在Vue-cli中怎么安装使用？" class="headerlink" title="css在Vue.cli中怎么安装使用？"></a>css在Vue.cli中怎么安装使用？</h3><p><strong>Scss：</strong><br>可以用变量，例如（$变量名称=值）<br>可以用混合器，例如（）<br>可以嵌套<br><strong>Vue.cli中安装使用：</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//安装</span></span><br><span class="line">npm i -D sass-loader</span><br><span class="line">npm i -D node-sass</span><br><span class="line"><span class="comment">//页面引用</span></span><br><span class="line">&lt;style lang=<span class="string">"scss"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="什么是MVVM"><a href="#什么是MVVM" class="headerlink" title="什么是MVVM"></a>什么是MVVM</h3><p>ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作是自动的，无需人为操作DOM。<br>MVVM主要解决了MVC中大量的DOM 操作使页面渲染性能降低，加载速度变慢的缺陷</p>
+<h3 id="一些报错及解决方法"><a href="#一些报错及解决方法" class="headerlink" title="一些报错及解决方法"></a>一些报错及解决方法</h3><ol>
+<li><p>Vue空格等报错解决方法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//注释掉webpack.base.config.js文件中的如下代码</span></span><br><span class="line"><span class="keyword">const</span> createLintingRule = <span class="function"><span class="params">()</span> =&gt;</span> (&#123;</span><br><span class="line">  <span class="comment">/*test: /\.(js|vue)$/,</span></span><br><span class="line"><span class="comment">  loader: 'eslint-loader',</span></span><br><span class="line"><span class="comment">  enforce: 'pre',</span></span><br><span class="line"><span class="comment">  include: [resolve('src'), resolve('test')],</span></span><br><span class="line"><span class="comment">  options: &#123;</span></span><br><span class="line"><span class="comment">    formatter: require('eslint-friendly-formatter'),</span></span><br><span class="line"><span class="comment">    emitWarning: !config.dev.showEslintErrorsInOverlay</span></span><br><span class="line"><span class="comment">  &#125;*/</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Vue去掉警告 You are running Vue in development mode<br>在js中加一句：<code>Vue.config.productionTip=false</code></p>
+</li>
+</ol>
+<h3 id="使用Vue时的注意事项及一些小技巧"><a href="#使用Vue时的注意事项及一些小技巧" class="headerlink" title="使用Vue时的注意事项及一些小技巧"></a>使用Vue时的注意事项及一些小技巧</h3><ol>
+<li>vue实例挂载点，不能是div和html</li>
+<li>单vue组件，template必需且只能有一个根结点</li>
+<li>监听一个vue组件的input时加<a href="mailto:.native`@keyup.enter.native" target="_blank" rel="noopener">.native`@keyup.enter.native</a>=”addTodo”`</li>
+<li><p>使文本框自动获取焦点的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html文件</span></span><br><span class="line">&lt;input ref=<span class="string">"input"</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// js文件</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  ...</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    <span class="keyword">this</span>.$refs[<span class="string">'input'</span>].focus()</span><br><span class="line">    <span class="comment">// this.$refs['input'].value = ''</span></span><br><span class="line">  &#125;，</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>让CSS只在当前组件中起作用，可以将当前组件的<code>&lt;style&gt;</code>修改为<code>&lt;style scoped&gt;</code></p>
+</li>
+<li>渲染时莫名其妙报错可以用<code>:key=&quot;xxx.id&quot;</code>解决。原因：key的值是需要是唯一识别的</li>
+<li>避免<code>v-if</code>和<code>v-for</code> 用在一起。为什么？因为v-for 比 v-if 具有更高的优先级，通过v-if 移动到容器元素，不会再重复遍历列表中的每个值。只检查它一次，且不会在 v-if 为否的时候运算 v-for。</li>
+</ol>
+<h3 id="图片资源懒加载"><a href="#图片资源懒加载" class="headerlink" title="图片资源懒加载"></a>图片资源懒加载</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下载</span></span><br><span class="line">$ npm install vue-lazyload --save-dev</span><br><span class="line"><span class="comment">// 引入</span></span><br><span class="line"><span class="keyword">import</span> VueLazyload <span class="keyword">from</span> <span class="string">'vue-lazyload'</span></span><br><span class="line">Vue.use(VueLazyload)</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">&lt;img v-lazy=<span class="string">"/static/img/1.png"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><ol>
+<li>频繁切换条件场景用<code>v-show</code>，不频繁的切换使用<code>v-if</code>。（<code>v-show</code>元素一直被渲染； <code>v-if</code>条件为真时才渲染）</li>
+<li>依赖的属性值进行数值计算时使用<code>computed</code>，监听数据变化后执行异步或开销较大的操作时使用<code>watch</code></li>
+<li><code>v-for</code>比<code>v-if</code>优先级高，如使用在同一个标签，会意味着每个循环都会执行<code>v-if</code>，如果不是每个循环都需要判断，最好将<code>v-if</code>放在循环外面</li>
+<li>如果内容不需要改动，可将数据<code>Object.freeze(data)</code>冻结起来，防止Vue通过 <code>Object.defineProperty</code>对数据进行劫持</li>
+<li>由于在Vue组件内使用<code>addEventListene</code>等方式是不会自动销毁的，所以需要在组件销毁时手动<code>removeEventListener</code>移除这些事件的监听，以免造成内存泄露</li>
+<li>图片路由资源懒加载</li>
+<li>第三方插件按需引入，可借用<code>babel-plugin-component</code>插件</li>
+<li>服务端渲染SSR，直接在服务端完成渲染，所以可以被搜索引擎爬取工具抓取（和异步获取的SPA页面相比有更好的SEO，搜索引擎爬取工具抓取不到异步返回的内容），且无需等待所有js加载完再去渲染，能加快首屏加载速度。缺点：需要Node.js环境、只支持<code>beforCreate</code>和<code>created</code>两个钩子函数、服务器负载</li>
+</ol>
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式，它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化，并没有任何永久存储的功能。每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。<br><a href="https://www.jianshu.com/p/a804606ad8e9" target="_blank" rel="noopener">十分钟入门Vuex</a></p>
+<h3 id="如何在-Vue-组件中展示状态？"><a href="#如何在-Vue-组件中展示状态？" class="headerlink" title="如何在 Vue 组件中展示状态？"></a>如何在 Vue 组件中展示状态？</h3><p>一个store实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">"vue"</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">"vuex"</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state，   </span><br><span class="line">  getters，    </span><br><span class="line">  mutations， </span><br><span class="line">  actions， </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>在Vue的实例中，把 store 对象提供给 “store” 选项<code>即store:store</code>，这可以把 store 的实例注入所有的子组件，子组件能通过<code>this.$store</code>访问到，如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  store,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Vuex的几种属性介绍"><a href="#Vuex的几种属性介绍" class="headerlink" title="Vuex的几种属性介绍"></a>Vuex的几种属性介绍</h3><p>vuex一共有5种属性，分别是State、 Getter、Mutation 、Action、 Module</p>
+<h4 id="State"><a href="#State" class="headerlink" title="State"></a>State</h4><ol>
+<li>Vuex就是一个仓库，仓库里面放了很多对象，state是唯一的数据源，<strong>相当于VUE中的data</strong></li>
+<li>State里面存放的数据是响应式的，Vue组件从store中读取数据，若是store中的数据发生改变，依赖这个数据的组件也会发生更新</li>
+<li>通过mapState把全局的 state 和 getters 映射到当前组件的 computed 计算属性中</li>
+<li>更改 Vuex 的 store 中的状态的唯一方法是提交 mutation</li>
+<li><strong>mapState</strong>辅助函数</li>
+</ol>
+<h4 id="Getter"><a href="#Getter" class="headerlink" title="Getter"></a>Getter</h4><ol>
+<li>Getters 可以对State进行计算操作，相当于<strong>VUE中的computed</strong>，getters 可以在多组件之间复用，如果一个状态只在一个组件内使用，是可以不用getters</li>
+<li><p>可以通过属性访问，如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">  doneTodosCount () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.$store.getters.doneTodosCount</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过方法访问（让 getter 返回一个函数，来实现给 getter 传参，如<code>store.getters.getTodoById(2)的形式</code>），但是需要注意的是，getter 在通过方法访问时，每次都会去进行调用，而不会缓存结果。</p>
+</li>
+<li><strong>mapGetters</strong>辅助函数</li>
+</ol>
+<h4 id="Mutation"><a href="#Mutation" class="headerlink" title="Mutation"></a>Mutation</h4><ol>
+<li><strong>同步</strong>，<strong>相当于VUE中的methods</strong>，但是只能是同步。每个 mutation 都有一个字符串的 <strong>事件类型 (type)</strong> 和 一个 <strong>回调函数 (handler)</strong>。它的回调函数(handler)接受state作为第一个参数，如<code>handler(state,其他参数){}</code></li>
+<li><p>不能直接调用一个 mutation handler,需要以相应的 type 调用 <strong>store.commit</strong> 方法，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mutations: &#123;</span><br><span class="line">  increment (state, n) &#123;</span><br><span class="line">    state.count += n</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">store.commit(<span class="string">'increment'</span>，额外的参数即载荷payload)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象风格的提交方式，即直接使用包含 type 属性的对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">store.commit(&#123;</span><br><span class="line">  type: <span class="string">'increment'</span>,</span><br><span class="line">  amount: <span class="number">10</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在对象上添加新属性<br><code>Vue.set(obj, &#39;newProp&#39;, 123)</code><br><code>state.obj = { ...state.obj, newProp: 123 }</code></p>
+</li>
+</ol>
+<h4 id="Action"><a href="#Action" class="headerlink" title="Action"></a>Action</h4><p><strong>异步</strong>,但是actions不能对数据，只能用commit调用mutations。参数是store,可以用{commit}，然后commit(‘mutations中的方法’, 参数)，  <code>this.$store.dispatch</code>用于分发action</p>
+<h4 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h4><p>在其他地方用引入<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在其他地方用引入</span></span><br><span class="line"><span class="keyword">import</span> &#123;mapState,mapGetters,mapMuations, mapAtions&#125; <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  computed:&#123;</span><br><span class="line">    ...mapState([<span class="string">'increment'</span>])<span class="comment">//相当于将 `this.increment()` 映射为 `this.$store.commit('increment')`</span></span><br><span class="line">    ...mapGetters([<span class="string">''</span>])</span><br><span class="line">  &#125;</span><br><span class="line">  methods:&#123;</span><br><span class="line">    ...mapMuations([<span class="string">''</span>])</span><br><span class="line">    ...mapAtions([<span class="string">''</span>])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-热重载Hot-Reload"><a href="#3-热重载Hot-Reload" class="headerlink" title="3  热重载Hot Reload"></a>3  热重载Hot Reload</h3><p>把getters统一为数据的获取出口，actions统一为数据的操作入口<br>热重载：主要在开发环境中使用；当模块内容修改时，保留Vuex数据，重载修改模块的业务逻辑；如果不用热重载，修改模块时整体刷新，数据不再保留<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Vuex 支持在开发过程中热重载 mutation、module、action 和 getter、</span></span><br><span class="line"><span class="comment">//对于 mutation 和模块，需要使用 store.hotUpdate() 方法</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> mutations <span class="keyword">from</span> <span class="string">'./mutations.js'</span></span><br><span class="line"><span class="keyword">import</span> getters <span class="keyword">from</span> <span class="string">'./getters.js'</span></span><br><span class="line"><span class="keyword">import</span> actions <span class="keyword">from</span> <span class="string">'./actions.js'</span></span><br><span class="line"><span class="keyword">import</span> modulesA <span class="keyword">from</span> <span class="string">'./modules/a'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"><span class="keyword">const</span> state = &#123; ... &#125;</span><br><span class="line"><span class="keyword">const</span> store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state,</span><br><span class="line">  getters,</span><br><span class="line">  mutations,</span><br><span class="line">  actions,</span><br><span class="line">  modules: &#123;</span><br><span class="line">      a: moduleA</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//热重载</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">module</span>.hot) &#123;</span><br><span class="line">  <span class="comment">// 使 action 和 mutation 成为可热重载模块</span></span><br><span class="line">  <span class="built_in">module</span>.hot.accept([<span class="string">'./getters.js'</span>,<span class="string">'./mutations.js'</span>, <span class="string">'./actions.js'</span>,<span class="string">'./modules/a'</span>], () =&gt; &#123;</span><br><span class="line">    <span class="comment">// 获取更新后的模块</span></span><br><span class="line">    <span class="comment">// 因为 babel 6 的模块编译格式问题，这里需要加上 `.default`</span></span><br><span class="line">    <span class="comment">// 加载新模块</span></span><br><span class="line">    store.hotUpdate(&#123;</span><br><span class="line">      getters: <span class="built_in">require</span>(<span class="string">'./getters.js'</span>).default</span><br><span class="line">      mutations: <span class="built_in">require</span>(<span class="string">'./mutations.js'</span>).default</span><br><span class="line">      actions: equire(<span class="string">'./actions.js'</span>).default</span><br><span class="line">      modules: &#123;</span><br><span class="line">        a: <span class="built_in">require</span>(<span class="string">'./modules/a'</span>).default</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Vue-router"><a href="#Vue-router" class="headerlink" title="Vue-router"></a>Vue-router</h2><p><a href="http://www.cnblogs.com/keepfool/p/5690366.html" target="_blank" rel="noopener">vue-router入门学习文章</a><br>路由执行过程：用户点击 <code>router-link</code> 标签时，寻找 <code>to</code> 属性，<code>to</code> 属性和 <code>js</code> 中配置的路径<code>{ path: &#39;/home&#39;, component: Home}</code>  <code>path</code> 对应，找到匹配的组件，最后把组件渲染到 <code>router-view</code> 标签，OK。</p>
+<h3 id="1-router和-route的区别是什么？都在什么时候用？"><a href="#1-router和-route的区别是什么？都在什么时候用？" class="headerlink" title="1  $router和$route的区别是什么？都在什么时候用？"></a>1  $router和$route的区别是什么？都在什么时候用？</h3><h4 id="this-router："><a href="#this-router：" class="headerlink" title="this.$router："></a>this.$router：</h4><p>表示全局路由器对象，项目中通过router路由参数注入路由之后，在任何一个页面都可以通过此方法获取到路由器对象，并调用其<code>push()</code>, <code>go()</code>等方法；</p>
+<h4 id="this-route"><a href="#this-route" class="headerlink" title="this.$route:"></a>this.$route:</h4><p>表示当前正在用于跳转的路由器对象，可以调用其name、path、query、params等方法；<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两条路由</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/home'</span>, <span class="attr">component</span>: Home &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/about'</span>, <span class="attr">component</span>: About &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment">//创建路由实例</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">      routes,</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//配置完成后把路由实例注入到vue根实例</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/29/脚手架搭建项目/" rel="next" title="Vue-cli脚手架搭建项目">
+                <i class="fa fa-chevron-left"></i> Vue-cli脚手架搭建项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/19/几种经典排序算法原理/" rel="prev" title="几种经典排序算法原理">
+                几种经典排序算法原理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div class="ds-thread" data-thread-key="2018/07/18/Vue相关知识整理/" data-title="Vue相关知识整理" data-url="http://yoursite.com/2018/07/18/Vue相关知识整理/">
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/head.jpg" alt="Nola">
+            
+              <p class="site-author-name" itemprop="name">Nola</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Nolaaaaa" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://www.cnblogs.com/nolaaaaa/" target="_blank" title="cnblog">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>cnblog</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://nolaaaaa.github.io/myResume/" target="_blank" title="resume">
+                      
+                        <i class="fa fa-fw fa-bullseye"></i>resume</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue"><span class="nav-text">Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue的computed属性和methods区别"><span class="nav-text">vue的computed属性和methods区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-的双向绑定是如何实现的？如何追踪变化？"><span class="nav-text">Vue 的双向绑定是如何实现的？如何追踪变化？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#父子通信"><span class="nav-text">父子通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#v-show和v-if指令的共同点和不同点"><span class="nav-text">v-show和v-if指令的共同点和不同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期"><span class="nav-text">生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css在Vue-cli中怎么安装使用？"><span class="nav-text">css在Vue.cli中怎么安装使用？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是MVVM"><span class="nav-text">什么是MVVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些报错及解决方法"><span class="nav-text">一些报错及解决方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Vue时的注意事项及一些小技巧"><span class="nav-text">使用Vue时的注意事项及一些小技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图片资源懒加载"><span class="nav-text">图片资源懒加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能优化"><span class="nav-text">性能优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex"><span class="nav-text">Vuex</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何在-Vue-组件中展示状态？"><span class="nav-text">如何在 Vue 组件中展示状态？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vuex的几种属性介绍"><span class="nav-text">Vuex的几种属性介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#State"><span class="nav-text">State</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Getter"><span class="nav-text">Getter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mutation"><span class="nav-text">Mutation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Action"><span class="nav-text">Action</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Module"><span class="nav-text">Module</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-热重载Hot-Reload"><span class="nav-text">3  热重载Hot Reload</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue-router"><span class="nav-text">Vue-router</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-router和-route的区别是什么？都在什么时候用？"><span class="nav-text">1  $router和$route的区别是什么？都在什么时候用？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#this-router："><span class="nav-text">this.$router：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this-route"><span class="nav-text">this.$route:</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nola</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script>
+    var APP_ID = '<%- config.leancloud_visitors.app_id %>';
+    var APP_KEY = '<%- config.leancloud_visitors.app_key %>';
+    AV.init({
+        appId: APP_ID,
+        appKey: APP_KEY
+    });
+    // 显示次数
+    function showTime(Counter) {
+        var query = new AV.Query("Counter");
+        if($(".leancloud_visitors").length > 0){
+            var url = $(".leancloud_visitors").attr('id').trim();
+            // where field
+            query.equalTo("words", url);
+            // count 
+            query.count().then(function (number) {
+                // There are number instances of MyClass where words equals url.
+                $(document.getElementById(url)).text(number?  number : '--');
+            }, function (error) {
+                // error is an instance of AVError.
+            });
+        }
+    }
+   // 追加pv
+    function addCount(Counter) {
+        var url = $(".leancloud_visitors").length > 0 ? $(".leancloud_visitors").attr('id').trim() : 'icafebolger.com';
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {
+        })
+    }
+</script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'rldgl2btVyOXBYKETyCVTvDT-gzGzoHsz',
+        appKey: 'Ur2vRYL9114jx73B9TJqtzEv',
+        placeholder: 'ヾﾉ≧∀≦)o小盆友，快来留言吧！',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("rldgl2btVyOXBYKETyCVTvDT-gzGzoHsz", "Ur2vRYL9114jx73B9TJqtzEv");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottom + Left";
+      
+          pbOptions.networks = "Weibo,Wechat,QQZone,Evernote,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
