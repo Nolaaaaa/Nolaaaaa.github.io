@@ -530,7 +530,7 @@
   <entry>
     <title><![CDATA[实现两个jQuery的API（addClass、text）]]></title>
     <url>%2F2018%2F05%2F10%2F%E5%AE%9E%E7%8E%B0%E4%B8%A4%E4%B8%AAjQuery%E7%9A%84API%EF%BC%88addClass%E3%80%81text%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[用原生JS实现jQuery的addClass和text两个API 目的 Quick Start给所有的div添加一个叫“red”的class，为方便看到代码的效果，设置如下css，在设置“red”成功时，文本会变红 123.red&#123; color:red;&#125; 将所有的div中的textContent变为“Hi”，HTML代码如下： 1234567&lt;body&gt; &lt;div class="item1"&gt;选项1&lt;/div&gt; &lt;div class="item2"&gt;选项2&lt;/div&gt; &lt;div class="item3"&gt;选项3&lt;/div&gt; &lt;div class="item4"&gt;选项4&lt;/div&gt; &lt;div class="item5"&gt;选项5&lt;/div&gt;&lt;/body&gt; 思路完整代码及思路如下，效果 点击这里]]></content>
+    <content type="text"><![CDATA[用原生JS实现jQuery的addClass和text两个API 目的Quick Start给所有的div添加一个叫“red”的class，为方便看到代码的效果，设置如下css，在设置“red”成功时，文本会变红123.red&#123; color:red;&#125; 将所有的div中的textContent变为“Hi”，HTML代码如下：1234567&lt;body&gt; &lt;div class="item1"&gt;选项1&lt;/div&gt; &lt;div class="item2"&gt;选项2&lt;/div&gt; &lt;div class="item3"&gt;选项3&lt;/div&gt; &lt;div class="item4"&gt;选项4&lt;/div&gt; &lt;div class="item5"&gt;选项5&lt;/div&gt;&lt;/body&gt; 思路完整代码及思路如下，效果 点击这里]]></content>
       <categories>
         <category>前端</category>
       </categories>
