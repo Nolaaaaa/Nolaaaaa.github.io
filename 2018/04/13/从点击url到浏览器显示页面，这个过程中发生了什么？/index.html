@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="Nola&#39;s Blog">
 <meta property="og:description" content="从点击url到浏览器显示页面这个过程可以分为六步">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-27T04:22:41.923Z">
+<meta property="og:updated_time" content="2020-05-04T12:45:33.997Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从点击url到浏览器显示页面，这个过程中发生了什么？">
 <meta name="twitter:description" content="从点击url到浏览器显示页面这个过程可以分为六步">
@@ -414,21 +414,21 @@
 
       
         <p>从点击url到浏览器显示页面这个过程可以分为六步<br><a id="more"></a></p>
-<h3 id="1-浏览器通过域名找出其IP地址（DNS解析）"><a href="#1-浏览器通过域名找出其IP地址（DNS解析）" class="headerlink" title="1  浏览器通过域名找出其IP地址（DNS解析）"></a>1  浏览器通过域名找出其IP地址（DNS解析）</h3><p>客户端先检查本地是否有对应的IP地址，若找到则返回响应的IP地址。若没找到则请求上级DNS服务器，直至找到或到根节点。（<code>浏览器缓存</code>→<code>系统缓存</code>→<code>路由器缓存</code>→<code>ISP DNS缓存</code>→<code>从根域名服务器递归搜索</code>） 注意⚠️： </p>
+<h3 id="浏览器通过域名找出其IP地址（DNS解析）"><a href="#浏览器通过域名找出其IP地址（DNS解析）" class="headerlink" title="浏览器通过域名找出其IP地址（DNS解析）"></a>浏览器通过域名找出其IP地址（DNS解析）</h3><p>客户端先检查本地是否有对应的IP地址，若找到则返回响应的IP地址。若没找到则请求上级DNS服务器，直至找到或到根节点。（<code>浏览器缓存</code>→<code>系统缓存</code>→<code>路由器缓存</code>→<code>ISP DNS缓存</code>→<code>从根域名服务器递归搜索</code>） 注意⚠️： </p>
 <ol>
 <li><strong>URL和域名的区别：</strong>域名：需要注册和购买，域名经过解析为ip地址。。。就是说用ip地址和域名都可以访问同一资源。url：简单说网址=ip或域名 + 端口号 + 资源位置 + 参数 + 锚点 </li>
 <li><strong>IP 地址与域名的关系：</strong>多个提供相同服务的服务器 IP 可设置为同一个域名，但同一时刻一个域名只能解析出一个 IP地址。<br>一个 IP 地址可以绑定多个域名。 </li>
 <li>若修改hosts文件，可自己指定域名的IP，绕过DNS。</li>
 </ol>
-<h3 id="2-浏览器和服务器建立连接（TCP-TP三次握手）"><a href="#2-浏览器和服务器建立连接（TCP-TP三次握手）" class="headerlink" title="2  浏览器和服务器建立连接（TCP/TP三次握手）"></a>2  浏览器和服务器建立连接（TCP/TP三次握手）</h3><ol>
+<h3 id="浏览器和服务器建立连接（TCP-TP三次握手）"><a href="#浏览器和服务器建立连接（TCP-TP三次握手）" class="headerlink" title="浏览器和服务器建立连接（TCP/TP三次握手）"></a>浏览器和服务器建立连接（TCP/TP三次握手）</h3><ol>
 <li>客户端发送<code>SYN</code>包到服务器，等待服务器确认接收。（浏览器问服务器：我可以连接你吗？）</li>
 <li>服务器确认接收<code>SYN</code>包并确认客户的<code>SYN</code>，并发送回来一个<code>SYN+ACK</code>的包给客户端。（服务器：好，连吧）</li>
 <li>客户端确认接收服务器的<code>SYN+ACK</code>包，并向服务器发送确认包<code>ACK</code>，二者相互建立联系完成TCP三次握手后，就可以开始传输数据了。（浏览器：嗯，那我连接了）   </li>
 </ol>
-<h3 id="3-浏览器向服务器发送HTTP请求"><a href="#3-浏览器向服务器发送HTTP请求" class="headerlink" title="3  浏览器向服务器发送HTTP请求"></a>3  浏览器向服务器发送HTTP请求</h3><p>建立连接成功后，浏览器给web服务器发送一个HTTP请求。</p>
-<h3 id="4-服务器接受到请求并返回HTTP响应"><a href="#4-服务器接受到请求并返回HTTP响应" class="headerlink" title="4  服务器接受到请求并返回HTTP响应"></a>4  服务器接受到请求并返回HTTP响应</h3><p>服务器接到请求后，会根据 HTTP 请求中的内容来决定如何获取相应的文件，并将文件发送给浏览器</p>
-<h3 id="5-浏览器解析渲染页面"><a href="#5-浏览器解析渲染页面" class="headerlink" title="5  浏览器解析渲染页面"></a>5  浏览器解析渲染页面</h3><p>浏览器根据响应先解析HTML文件构建DOM树，然后解析CSS文件构建渲染树，等到渲染树构建完成后，浏览器开始布局渲染树并将其绘制到屏幕上。</p>
-<h3 id="6-客户端和服务端发送四次数据包断开连接（四次挥手）"><a href="#6-客户端和服务端发送四次数据包断开连接（四次挥手）" class="headerlink" title="6  客户端和服务端发送四次数据包断开连接（四次挥手）"></a>6  客户端和服务端发送四次数据包断开连接（四次挥手）</h3><ol>
+<h3 id="浏览器向服务器发送HTTP请求"><a href="#浏览器向服务器发送HTTP请求" class="headerlink" title="浏览器向服务器发送HTTP请求"></a>浏览器向服务器发送HTTP请求</h3><p>建立连接成功后，浏览器给web服务器发送一个HTTP请求。</p>
+<h3 id="服务器接受到请求并返回HTTP响应"><a href="#服务器接受到请求并返回HTTP响应" class="headerlink" title="服务器接受到请求并返回HTTP响应"></a>服务器接受到请求并返回HTTP响应</h3><p>服务器接到请求后，会根据 HTTP 请求中的内容来决定如何获取相应的文件，并将文件发送给浏览器</p>
+<h3 id="浏览器解析渲染页面"><a href="#浏览器解析渲染页面" class="headerlink" title="浏览器解析渲染页面"></a>浏览器解析渲染页面</h3><p>浏览器根据响应先解析HTML文件构建DOM树，然后解析CSS文件构建渲染树，等到渲染树构建完成后，浏览器开始布局渲染树并将其绘制到屏幕上。</p>
+<h3 id="客户端和服务端发送四次数据包断开连接（四次挥手）"><a href="#客户端和服务端发送四次数据包断开连接（四次挥手）" class="headerlink" title="客户端和服务端发送四次数据包断开连接（四次挥手）"></a>客户端和服务端发送四次数据包断开连接（四次挥手）</h3><ol>
 <li>客户端主动关闭连接，发送<code>FIN</code>报文给服务器，然后进入<code>FIN_WAIT_1</code>状态。（浏览器问服务器：不早了，我该走了）</li>
 <li>服务器收到<code>FIN</code>报文，回应一个<code>ACK</code>报文，进入<code>CLOSED_WAIT</code>状态；客户端收到<code>FIN</code>报文，进入<code>FIN_WAIT_2</code>状态。（服务器：知道了）</li>
 <li>服务器向客户端发送FIN报文，进入<code>LAST_ACK</code>状态。（服务器：我也该走了）</li>
@@ -659,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-浏览器通过域名找出其IP地址（DNS解析）"><span class="nav-text">1  浏览器通过域名找出其IP地址（DNS解析）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-浏览器和服务器建立连接（TCP-TP三次握手）"><span class="nav-text">2  浏览器和服务器建立连接（TCP/TP三次握手）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-浏览器向服务器发送HTTP请求"><span class="nav-text">3  浏览器向服务器发送HTTP请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-服务器接受到请求并返回HTTP响应"><span class="nav-text">4  服务器接受到请求并返回HTTP响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-浏览器解析渲染页面"><span class="nav-text">5  浏览器解析渲染页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-客户端和服务端发送四次数据包断开连接（四次挥手）"><span class="nav-text">6  客户端和服务端发送四次数据包断开连接（四次挥手）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器通过域名找出其IP地址（DNS解析）"><span class="nav-text">浏览器通过域名找出其IP地址（DNS解析）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器和服务器建立连接（TCP-TP三次握手）"><span class="nav-text">浏览器和服务器建立连接（TCP/TP三次握手）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器向服务器发送HTTP请求"><span class="nav-text">浏览器向服务器发送HTTP请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器接受到请求并返回HTTP响应"><span class="nav-text">服务器接受到请求并返回HTTP响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器解析渲染页面"><span class="nav-text">浏览器解析渲染页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#客户端和服务端发送四次数据包断开连接（四次挥手）"><span class="nav-text">客户端和服务端发送四次数据包断开连接（四次挥手）</span></a></li></ol></div>
             
 
           </div>
