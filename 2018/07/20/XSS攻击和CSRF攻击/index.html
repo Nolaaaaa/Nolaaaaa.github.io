@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="Nola&#39;s Blog">
 <meta property="og:description" content="整理了XSS攻击和CSRF攻击的攻击原理以及如何预防这类攻击">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-27T04:22:41.921Z">
+<meta property="og:updated_time" content="2020-05-04T05:50:04.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS攻击和CSRF攻击">
 <meta name="twitter:description" content="整理了XSS攻击和CSRF攻击的攻击原理以及如何预防这类攻击">
@@ -425,6 +425,7 @@
 <li>使用innerText替代innerHTML</li>
 <li>使用 innerHTML 时进行字符过滤，如：<code>&lt; =&gt; &amp;lt</code>、<code>&gt; =&gt; &amp;gt</code>、<code>&amp; =&gt; &amp;amp</code>、<code>‘ =&gt; &amp;#39</code>、<code>‘ =&gt; &amp;quot</code></li>
 <li>使用 CSP （Content Security Policy内容安全性政策）</li>
+<li>Cookie 设置 HTTP Only（cookie只能通过服务器端修改，通过js脚本将无法读取到cookie信息，防止用户身份验证信息被盗取）</li>
 </ol>
 <h3 id="CSRF-攻击及预防"><a href="#CSRF-攻击及预防" class="headerlink" title="CSRF 攻击及预防"></a>CSRF 攻击及预防</h3><p>CSRF（Cross-site request forgery跨站请求伪造）源于Web的隐式身份验证机制，其攻击原理为：</p>
 <ol>
@@ -438,12 +439,11 @@
 <p><strong>CSRF 攻击预防方法：</strong></p>
 <ol>
 <li>Get 请求不用于对数据进行修改</li>
-<li>Cookie 设置 HTTP Only</li>
-<li>接口设置禁止跨域</li>
-<li>请求时带上验证信息，如验证码、Token</li>
+<li>重要数据交互采用 POST（并不安全，伪造一个form 表单即可破解）</li>
 <li>验证 HTTP Referer（来源地址） 字段（并不安全，Referer可以被更改）</li>
 <li>在 HTTP 头中自定义属性并验证</li>
-<li>重要数据交互采用 POST 进行接收（并不安全，伪造一个form 表单即可破解）</li>
+<li>请求时带上验证信息，如验证码、Token</li>
+<li>接口设置禁止跨域</li>
 </ol>
 
       
